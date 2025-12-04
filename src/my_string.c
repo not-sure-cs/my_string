@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <ctype.h>
 #include "my_string.h"
 
 int my_strlen(const char* string)
@@ -108,5 +109,42 @@ int my_strncmp(const char *str1, const char *str2, const int max_len)
     return n;
 }
 
+int my_strcasecmp(const char *str1, const char *str2)
+{
+    const char *ptr1 ,*ptr2;
+    int plow1, plow2;
+    int n = 0;
 
+    for(ptr1 = str1, ptr2 = str2; *ptr1 != '\0' && *ptr2 != '\0' ; ptr1++, ptr2++)
+    {
+        plow1 = tolower(*ptr1);
+        plow2 = tolower(*ptr1);
 
+        if(plow1 == plow2)
+        {
+            const char *p1 = ptr1 + 1, *p2 = ptr2 +1;
+            n = 0;
+            if( *p1 == '\0' && *p2 != '\0')
+                
+                n = -1;
+            
+            else if( *p2 == '\0' && *p1 != '\0')
+
+                n = 1;
+        
+            continue;
+        }
+        else if((plow1 - plow2) > 0)
+        {
+            n = 1;
+            break;
+        }
+        else if((plow1 - plow2) < 0)
+        {
+            n = -1;
+            break;
+        }
+    }
+
+    return n;
+}
