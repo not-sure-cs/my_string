@@ -2,6 +2,8 @@
 #include <ctype.h>
 #include "my_string.h"
 
+//core string inspection
+
 int my_strlen(const char* string)
 {
     int n = 0;
@@ -36,6 +38,8 @@ bool my_is_empty(const char* string)
         return false;
     
 }
+
+//comparison and ordering
 
 int my_strcmp(const char *str1, const char *str2)
 {
@@ -86,7 +90,7 @@ int my_strncmp(const char *str1, const char *str2, const int max_len)
             n = 0;
             if( *p1 == '\0' && *p2 != '\0')
                 
-                n = -1;
+                n = -1; 
             
             else if( *p2 == '\0' && *p1 != '\0')
 
@@ -148,3 +152,13 @@ int my_strcasecmp(const char *str1, const char *str2)
 
     return n;
 }
+
+bool my_streq(const char *a, const char *b)
+{
+    if(my_strcmp(a, b) == 0)
+        return true;
+
+    else
+        return false;
+}
+
